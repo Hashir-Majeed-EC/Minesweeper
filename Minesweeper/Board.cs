@@ -98,24 +98,25 @@ namespace Minesweeper
 
             if (board[x,y].getIsShown() == false)
             {
-                return dfs(x,y);
+                return dfs(x,y, board[x, y].getValue() == 0);
             }
             return result;
         }
 
-        private int dfs(int x, int y)
+        private int dfs(int x, int y, bool check)
         {
-            if ((x < 0 || x >= board.GetLength(0) || y < 0 || y >= board.GetLength(1) || board[x, y].getIsShown() || board[x,y].getIsBomb() || board[x,y].getValue() != 0))
+
+            if ((x < 0 || x >= board.GetLength(0) || y < 0 || y >= board.GetLength(1) || board[x, y].getIsShown() || board[x, y].getIsBomb() || check == false))
             {
                 return 2;
             }
             else
             {
                 board[x, y].setIsShown(true);
-                dfs(x + 1, y);
-                dfs(x - 1, y);
-                dfs(x, y + 1);
-                dfs(x, y - 1);
+                dfs(x + 1, y, board[x, y].getValue() == 0);
+                dfs(x - 1, y, board[x, y].getValue() == 0);
+                dfs(x, y + 1, board[x, y].getValue() == 0);
+                dfs(x, y - 1, board[x, y].getValue() == 0);
             }
             return 2;
         }
@@ -167,6 +168,24 @@ namespace Minesweeper
                 Console.WriteLine(text);
                 text = "";
             }
+        }
+
+        public bool CheckWin()
+        {
+            bool win = true;
+
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.GetLength(1); j++)
+                {
+                    if (board[i,j].getIsShown() == false && !board[i, j].getIsBomb())
+                    {
+                        win = false;
+                    }
+                }
+            }
+
+            return win;
         }
 
     }
