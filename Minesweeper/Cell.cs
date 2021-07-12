@@ -8,10 +8,12 @@ namespace Minesweeper
     {
         private bool isBomb;
         private int value;
+        private bool shown;
         public Cell(bool isBomb)
         {
             value = 0;
             this.isBomb = isBomb;
+            shown = false;
         }
 
         public int getValue()
@@ -27,6 +29,16 @@ namespace Minesweeper
         public bool getIsBomb()
         {
             return isBomb;
+        }
+
+        public bool getIsShown()
+        {
+            return shown;
+        }
+
+        public void setIsShown(bool x)
+        {
+            shown = x;
         }
     }
 }

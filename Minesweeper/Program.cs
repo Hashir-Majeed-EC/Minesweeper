@@ -12,22 +12,10 @@ namespace Minesweeper
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-            for (int i = 0; i < 10; i++)
-            {
-                string text = "";
-                for (int j = 0; j < 10; j++)
-                {
-                    if (b.board[i,j].getIsBomb())
-                    {
-                        text += "1";
-                    }
-                    else
-                    {
-                        text += "0";
-                    }
-                }
-                Console.WriteLine(text);
-            }
+            b.Move(1, 1);
+            b.Show();
+            Console.WriteLine(b.board[1, 1].getIsBomb());
+            b.ShowAll();
         }
     }
 }
