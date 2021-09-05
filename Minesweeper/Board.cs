@@ -123,26 +123,35 @@ namespace Minesweeper
         public void Show()
         {
             string text = "";
+            Console.Write("       ");
+            for (int ii = 0; ii < board.GetLength(1); ii++)
+            {
+                Console.Write("| " + ii + " ");
+            }
+            Console.Write("|");
+            Console.WriteLine("");
+            Console.WriteLine("");
             for (int i = 0; i < board.GetLength(0); i++)
             {
+                text += ("| " + i + " |  ");
+                text += "|";
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
                     if (!board[i, j].getIsShown())
                     {
-                        text += "*";
+                        text += " * |";
                     }
                     else
                     {
                         if (board[i, j].getIsBomb())
                         {
-                            text += "+";
+                            text += " + |";
                         }
                         else
                         {
-                            text += board[i, j].getValue().ToString();
+                            text += (" " + board[i, j].getValue().ToString() + " |");
                         }
                     }
-                    
                 }
                 Console.WriteLine(text);
                 text = "";
@@ -152,17 +161,27 @@ namespace Minesweeper
         public void ShowAll()
         {
             string text = "";
+            Console.Write("       ");
+            for (int ii = 0; ii < board.GetLength(1); ii++)
+            {
+                Console.Write("| " + ii + " ");
+            }
+            Console.Write("|");
+            Console.WriteLine("");
+            Console.WriteLine("");
             for (int i = 0; i < board.GetLength(0); i++)
             {
+                text += ("| " + i + " |  ");
+                text += "|";
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
                     if (board[i, j].getIsBomb())
                     {
-                        text += "+";
+                        text += " + |";
                     }
                     else
                     {
-                        text += board[i, j].getValue().ToString();
+                        text += (" " + board[i, j].getValue().ToString() + " |");
                     }                
                 }
                 Console.WriteLine(text);
