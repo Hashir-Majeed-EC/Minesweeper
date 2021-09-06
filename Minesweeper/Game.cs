@@ -32,7 +32,8 @@ namespace Minesweeper
                 Console.WriteLine("Enter y position: ");
                 y = Convert.ToInt32(Console.ReadLine());
 
-                result = b.Move(x, y);
+                Console.Clear();
+                result = b.Move(y, x);
                 if (b.CheckWin())
                 {
                     Console.WriteLine("You win!");
